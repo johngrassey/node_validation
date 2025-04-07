@@ -92,3 +92,18 @@ exports.usersDeletePost = (req, res) => {
   usersStorage.deleteUser(req.params.id);
   res.redirect("/");
 };
+
+exports.usersSearchGet = (req, res) => {
+  const { searchEmail } = req.query;
+  const user = usersStorage.searchUser(searchEmail);
+  if (!user) {
+    return res.status(400).render("createUser", {
+      title: "Search User",
+      errors: [{ msg: "User not found" }],
+    });
+  }
+  res.render("searchUser", {
+    title: "Search User",
+    user: user,
+  });
+};

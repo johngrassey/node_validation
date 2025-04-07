@@ -18,6 +18,10 @@ class UsersStorage {
     return this.storage[id];
   }
 
+  searchUser(email) {
+    return Object.values(this.storage).find((user) => user.email === email);
+  }
+
   updateUser(id, { firstName, lastName, email, age, bio }) {
     this.storage[id] = { id, firstName, lastName, email, age, bio };
   }
