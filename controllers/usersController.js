@@ -17,6 +17,7 @@ const validateUser = [
     .withMessage(`Last name ${alphaErr}`)
     .isLength({ min: 1, max: 10 })
     .withMessage(`Last name ${lengthErr}`),
+<<<<<<< HEAD
   body("email").trim().isEmail().withMessage("Email must be valid."),
   body("age")
     .isInt({ min: 18, max: 120 })
@@ -25,6 +26,8 @@ const validateUser = [
     .trim()
     .isLength({ min: 1, max: 200 })
     .withMessage("Bio must be less than 200 characters."),
+=======
+>>>>>>> 6e0789e936c9ee45a775f136032bb65c522ba89b
 ];
 
 exports.usersListGet = (req, res) => {
@@ -50,8 +53,13 @@ exports.usersCreatePost = [
         errors: errors.array(),
       });
     }
+<<<<<<< HEAD
     const { firstName, lastName, email, age, bio } = req.body;
     usersStorage.addUser({ firstName, lastName, email, age, bio });
+=======
+    const { firstName, lastName } = req.body;
+    usersStorage.addUser({ firstName, lastName });
+>>>>>>> 6e0789e936c9ee45a775f136032bb65c522ba89b
     res.redirect("/");
   },
 ];
@@ -76,6 +84,7 @@ exports.usersUpdatePost = [
         errors: errors.array(),
       });
     }
+<<<<<<< HEAD
     const { firstName, lastName, email, age, bio } = req.body;
     usersStorage.updateUser(req.params.id, {
       firstName,
@@ -83,6 +92,12 @@ exports.usersUpdatePost = [
       email,
       age,
       bio,
+=======
+    const { firstName, lastName } = req.body;
+    usersStorage.updateUser(req.params.id, {
+      firstName,
+      lastName,
+>>>>>>> 6e0789e936c9ee45a775f136032bb65c522ba89b
     });
     res.redirect("/");
   },
